@@ -1,0 +1,65 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'dailystats/style.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{category}}</title>
+
+</head>
+<body>
+<h1>{{category}}</h1>
+
+<table>
+    <form action="{% url 'dailystats:valuesaver' category.id %}" method="post">
+    {% csrf_token %}
+    {% for subcategory in sub_list_2 %}
+        <tr> 
+            <td><b>{{subcategory.subcategory_text}}</b></td>
+            <td><b>Value </b></td>
+            <td><b>Amount </b></td>
+            <td><b>Result </b></td>
+        </tr>
+        {% for measurefield in subcategory.measure_fields_list %}
+            <tr>
+                <td><p>{{measurefield}}</p></td>
+                <td><p>{{measurefield.valuefield_number}}</p></td>
+                <td><input type="number" name={{measurefield.measurefield_text}} value={{measurefield.amountfield_number}}></td>
+                <td><p>{{measurefield.result_number}}</p></td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><input type="submit" value="Submit"></td>
+    </form>
+</table>
+
+<table>
+    <form action="{% url 'dailystats:valuesaver' category.id %}" method="post">
+    {% csrf_token %}
+    {% for subcategory in sub_list_1 %}
+        <tr> 
+            <td><b>{{subcategory.subcategory_text}}</b></td>
+            <td><b>Value </b></td>
+            <td><b>Amount </b></td>
+            <td><b>Result </b></td>
+        </tr>
+        {% for measurefield in subcategory.measure_fields_list %}
+            <tr>
+                <td><p>{{measurefield}}</p></td>
+                <td><p>{{measurefield.valuefield_number}}</p></td>
+                <td><input type="number" name={{measurefield.measurefield_text}} value={{measurefield.amountfield_number}}></td>
+                <td><p>{{measurefield.result_number}}</p></td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><input type="submit" value="Submit"></td>
+    </form>
+</table>
+
+</body>
+</html>

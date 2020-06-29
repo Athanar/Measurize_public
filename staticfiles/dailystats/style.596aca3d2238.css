@@ -1,0 +1,132 @@
+h1 {
+    color: #557A95;
+    text-align: center;
+}
+body {
+    background: rgb(240,240,255);
+    font-family: "Lato", sans-serif;
+}
+main {
+    text-align: center;
+}
+table {
+    float: center;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+  
+td, th {
+    font-family: arial, sans-serif;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 4px;
+}
+
+tr {
+    background-color: #dddddd;
+}
+
+input {
+    font-family: arial, sans-serif;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #379683;
+}
+
+ul.topnav li {
+    float: left;
+}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #7395AE;}
+
+ul.topnav li a.active {background-color: #557A95;}
+
+ul.topnav li button {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #379683;
+    border-color: #379683;
+    border: 0px;
+}
+
+ul.topnav li button:hover:not(.active) {background-color: #7395AE;}
+
+ul.topnav li button.active {background-color: #557A95;}
+
+@media screen and (max-width: 600px) {
+ul.topnav li.right, 
+ul.topnav li {float: none;}
+}
+
+table.profiletable tr td input{
+    color: #557A95;
+    width: 150px;
+    background-color: rgb(240,240,255);
+}
+
+table.profiletable tr td button{
+    color: #557A95;
+    width: 150px;
+    background-color: rgb(240,240,255);
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: auto;
+    left: 0;
+    background-color: #557A95;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav button {
+    padding: 8px 8px 8px 8px;
+    background-color: #557A95;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    border: 0px;
+  }
+  
+  .sidenav button:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 140px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  

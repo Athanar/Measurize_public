@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="row justify-content-center pt-4">
+        <div class="col-6">
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <header><h1>Welcome to Measurize! </h1></header> 
+                    {% if new_user == True %}
+                    <div id="registration_content">
+                            <table class="table table-hover">
+                                <div class="input-group">
+                                    <tr>
+                                        <td></div class="input-group-prepend">
+                                            <span class="input-group-text ">Username</span>
+                                        </div></td>
+                                        <div class="container">
+                                            <td><input class="form-control" type="text" id="username"></td>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <td></div class="input-group-prepend">
+                                            <span class="input-group-text">Password</span>
+                                        </div></td>
+                                        <div class="container">
+                                            <td><input class="form-control" type="password" id="password"></td>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <td></div class="input-group-prepend">
+                                            <span class="input-group-text">Repeat password</span>
+                                        </div></td>
+                                        <div class="container">
+                                            <td><input class="form-control" type="password" id="confirmation"></td>
+                                        </div>
+                                    </tr>
+                                </div>
+                            </table> 
+                            <div class="btn-group"> 
+                                <button class="btn btn-outline-secondary form-control"  type="submit" id="make_user">Make User</button>
+                            </div>  
+                    </div>
+                    {% else %}
+                        <table class="table table-hover">
+                            <div class="input-group">
+                            <tr>
+                                <td></div class="input-group-prepend">
+                                    <span class="input-group-text">Username</span>
+                                </div></td>
+                                    <td><input class="form-control" type="text" id="username" label="Username"></td>
+                            </tr>
+                            <tr>
+                                <td></div class="input-group-prepend">
+                                    <span class="input-group-text">Password</span>
+                                </div></td>
+                                    <td><input class="form-control" type="password" id="password" label="Password"></td>
+                            </tr>
+                            </div>
+                        </table>
+                        <div class="btn-group">
+                            <div class="container">
+                                <button class="btn btn-outline-secondary form-control" type="submit" id="login" value="Login">Login</button>
+                            </div>
+                            <button class="btn btn-outline-secondary form-control" type="submit" id="new_user" value="Make new user">New User</button>
+                        </div>
+                    {% endif %}
+                    <div style="text-align: center;">
+                    {% if approval %}
+                        <b class="pt-5" id="approval">{{approval}}</b>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

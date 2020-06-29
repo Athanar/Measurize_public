@@ -1,0 +1,39 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'dailystats/style.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Measurize</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static "dailystats/scripts/corescripts.js?ver=" %}{{random}}"></script>
+<script type="text/javascript" src="{% static "dailystats/scripts/profilescript.js?ver=" %}{{random}}"></script>
+<script type="text/javascript" src="{% static "dailystats/scripts/login.js?ver=" %}{{random}}"></script>
+<script type="text/javascript" src="{% static "dailystats/scripts/measures.js?ver=" %}{{random}}"></script>
+<script type="text/javascript" src="{% static "dailystats/scripts/overview.js?ver=" %}{{random}}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body style="background-color:rgb(220,220,220);">
+    <nav class="navbar bg-info sticky-top">
+    </nav> 
+    <aside>
+    {% if user.is_authenticated %}
+    <script>loadTemplate('info/sidenav/', 'aside')</script>
+    {% endif %}
+    </aside>
+    <main id='main' >
+    {% if user.is_authenticated %}
+    <script>loadTemplate('home', 'main')</script>
+
+    {% else %}
+    <script>loadTemplate('login', 'main')</script>
+    
+    {% endif %}
+    </main>
+</body>

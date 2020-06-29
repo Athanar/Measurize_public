@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="row justify-content-center pt-4">
+        <div class="col-6">
+            <div class="card border-secondary">
+                <div class="card-body">
+                    <h1 class="card-title">Profile page</h1>
+                    <table class="table table-hover"> 
+                        <form method="post" id="base_profile_form">
+                        {% csrf_token %}
+                        <div class="btn-group">
+                        <tr>
+                            <th> Username </th>
+                            <td id="p_username">{{user.username}}</td>
+                            <td><button id="p_username" class="btn bg-secondary text-white form-control">Change username</button></td>
+                        </tr>
+                        <tr>
+                            <th> First name </th>
+                            <td id="p_first">{{user.first_name}}</td>
+                            <td><button id="p_firstname" class="btn bg-secondary text-white form-control">Change firstname</button></td>
+                        </tr>
+                        <tr>
+                            <th> Last name </th>
+                            <td id="p_last">{{user.last_name}}</td>
+                            <td><button id="p_lastname" class="btn bg-secondary text-white form-control">Change lastname</button></td>
+                        </tr>
+                        <tr>
+                            <th> Email </th>
+                            <td id='p_email'>{{user.email}}</td>
+                            <td><button id="p_email" class="btn bg-secondary text-white form-control">Change email</button></td>
+                        </tr>
+                        <tr>
+                            <th> Change password </th>
+                            <td></td>
+                            <td><button id="p_password" class="btn bg-secondary text-white form-control">Change password</button></td>
+                        </tr>
+                        <tr>
+                            <th> Delete user </th>
+                            <td></td>
+                            <td><button id="delete" class="btn bg-secondary text-white form-control">Delete account</button></td>
+                        </tr>
+                        </div>
+                        </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if action %}
+        <div class="row justify-content-center pt-4" id="p_card">
+            <div class="col-6">
+                <div class="card border-secondary">
+                    <div class="card-body">
+                        <table class="table table-hover"> 
+                            {% if action == 'p_username' %}
+                            <div class="input-group">
+                            <tr>
+                                <th>New username</hd>
+                                <td><input class="form-control" type="text" id="new_name" value="Write here"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button id="user_p_confirm" class="btn bg-secondary text-white">Change</button></td>
+                            </tr>
+                            {% endif %}
+                            {% if action == 'p_firstname' %}
+                            <tr>
+                                <th>New first name</th>
+                                <td><input class="form-control" type="text" id="new_name" value="Change firstname"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button id="first_p_confirm"class="btn bg-secondary text-white">Change</button></td>
+                            </tr>
+                            {% endif %}
+                            {% if action == 'p_lastname' %}
+                            <tr>
+                                <th>New last name</th>
+                                <td><input class="form-control" type="text" id="new_name" value="Change lastname"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button id="last_p_confirm"class="btn bg-secondary text-white"> Change</button></td>
+                            </tr>
+                            {% endif %}
+                            {% if action == 'p_email' %}
+                            <tr>
+                                <th>New email</th>
+                                <td><input class="form-control" type="text" id="new_email" value="Change email"></td>
+                            </tr>
+                            <tr>
+                                <th>Repeat email</th>
+                                <td><input class="form-control" type="text" id="repeat_new_email" value="Change email"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button id="mail_p_confirm"class="btn bg-secondary text-white"> Change</button></td>
+                            </tr>
+                            {% endif %}
+                            {% if action == 'p_password' %}
+                            <tr>
+                                <th>New password</th>
+                                <td><input class="form-control" type="password" id="new_password"></td>
+                            </tr>
+                            <tr>
+                                <th>Repeat password</th>
+                                <td><input class="form-control" type="password" id="repeat_new_password"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button id="pass_p_confirm"class="btn bg-secondary text-white"> Change</button></td>
+                            </tr>
+                            {% endif %}
+                            {% if action == 'delete' %}
+                            <tr>
+                                <th>Delete user</th>
+                                <td></td>
+                                <td><button id="delete_confirm" class="btn bg-danger text-white"> Are you sure?</button></td>
+                            </tr>
+                            </div>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if message %}
+    <p><b>{{message}}</b></p>
+    {% endif %}
+</div>

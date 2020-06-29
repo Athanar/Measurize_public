@@ -1,0 +1,68 @@
+{% load static %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        {% if dates|length < 10 %}
+        <div class="col-6">
+        {% else %}
+        <div class="col-10">
+        {% endif %}
+            <div class="card border-secondary shadow">
+                <div class="card-body">
+                    <h3 class="card-title">{{interval}} overview</h3>
+                    <select class="custom-select" id="cat_change_overview">
+                        <option id="overview_cat_all" value="{{active}}" selected>All</option>
+                        {% for category in categories %}
+                            {% if cat_id == category.id %}
+                            <option id="overview_cat_{{category.id}}" value="{{active}}" selected>{{category}}</option>
+                            {% else %}
+                            <option id="overview_cat_{{category.id}}" value="{{active}}">{{category}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <table class="table table-hover table-responsive pt-5">
+
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Measurement</th>
+                                {% for date in dates %}
+                                <th>{{date}}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                    {% if amounts %}
+                        {% for amount in amounts %}
+                            <tr>
+                                <th>{{amount.0}}</th>
+                                {% for num in amount %}
+                                    {% if  num == amount.0 %}
+                                    {% else %}
+                                        <td>{{num}}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                        <tr>
+                            <th class="border-dark">Daily totals:</th>
+                            {% if total_results %}
+                                {% for result in total_results %}
+                                    <td class="border-dark"> {{result}}</td>
+                                {% endfor %}
+                            {% endif %}
+                        </tr>  
+                        <tr>
+                            <th>Daily goals:</th>
+                            {% if goals %}
+                                {% for goal in goals %}
+                                    <td> {{goal}}</td>
+                                {% endfor %}
+                            {% endif %}
+                        </tr>
+                    </table>
+                    </br>
+                    <img src="{% static graph %}?ver={{random}}" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

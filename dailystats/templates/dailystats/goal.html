@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card border-secondary shadow align-items-center">
+                <div class="card-body"> 
+                    <h4 class="card-title">Hello welcome to goals</h4>
+                        {% if goal %}
+                        <p>Current overall goal</p>
+                        <table class="table table-hover table-responsive pt-5"> 
+                            <tr>
+                                <th>Goal value</th>
+                                <th>Rate of change</th>
+                                <th>Last changed</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>{{goal.goal_value}}</td>
+                                <td>{{goal.rate_of_change}}%</td>
+                                <td>{{goal.creation_date}}</td>
+                                <td><button id="change_goal">Change</button></td>
+                            </tr>
+                        </table>
+
+                        {% if change_goal %}
+                        <table class="table">
+                            <tr>
+                                <td>New value</td>
+                                <td>New rate</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input id="result_goal" type="number"></td>
+                                <td><input id="rate_change" type="number"></td>
+                                <td></td>
+                                <td><button id="set_goal">Save</button></td>
+                            </tr>
+                        </table>
+                        {% endif %}
+
+                        {% else %}
+                        <p>No current goals. Want to set a new goal?</p>
+                        <table class="table">
+                            <tr>
+                                <td>Set result goal</td>
+                                <td><input id="result_goal" type="number"></td>
+                                <td><button id="set_goal">Save</button></td>
+                            </tr>
+                            <tr>
+                                <td>Set rate of change</td>
+                                <td><input id="rate_change" type="number"></td>
+                                <td><button id="set_goal">Save</button></td>
+                            </tr>
+                        </table>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

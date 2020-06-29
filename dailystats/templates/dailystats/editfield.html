@@ -1,0 +1,66 @@
+{% if edit %}
+    <thead class="thead-light">
+        <tr>
+            <th scope="col" style="width: 25%">Name</th>
+            <th scope="col" style="width: 25%">Value</th>
+            <th scope="col">Category</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for measure in measures %}
+        <tr>
+            <th scope="row"><p class="table-correct">{{measure.measure_name}}</p></th>
+            <div class="input-group">
+                <td><input class="form-control ml-0" type="number" value="{{measure.measure_val}}" id="mf_val_{{measure.id}}"></td>
+            </div>
+            <td><select class="custom-select" style="width: 85%" id="cat_change_{{measure.id}}">
+                {% for category in categories %}
+                    {% if measure.category == category %}
+                        <option value="measure_{{measure.id}}" id="change_cat_{{category.id}}" selected>{{category}}</option>
+                    {% else %}
+                        <option value="measure_{{measure.id}}" id="change_cat_{{category.id}}">{{category}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select></td>
+            <td><button class="btn bg-danger" id="mf_deleteb_{{measure.id}}"><i class="material-icons text-light" >delete</i></button></td>
+        </tr>
+    {% empty %}
+    {% endfor %}
+        <tr>
+            <th><b>{{this_cat.category_name}}</b></th>
+            <td></td>
+            <td></td>
+            <td><button class="btn bg-danger" id="cat_deleteb_{{this_cat.id}}"><i class="material-icons text-light" >delete</i></button></td>
+        </tr>
+    </tbody>
+{% else %}
+    <thead class="thead-light ">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Value</th>
+            <th scope="col" style="width: 35%">Current amount</th>
+            <th scope="col">Result</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for measure in measures %}
+        <tr>
+            <th scope="row"><p class="table-correct">{{measure.measure_name}}</p></th>
+            <td><p class="table-correct">{{measure.measure_val}}</p></td>
+            <div class="input-group">
+                <td><input class="form-control" style="width: 85%" type="number" value="{{measure.measure_input}}" id="mf_amount_{{measure.id}}"></td>
+            </div>
+            <td><p class="table-correct" id="mf_result_{{measure.id}}">{{measure.result_number}}</p></td>                
+        </tr>
+    {% empty %}
+    {% endfor %}
+    <tr>
+        <th><b>Total</b></th>
+        <td></td>
+        <td></td>
+        <td><b id="result_{{num}}">{{total}}</b> </td>
+    </tr>
+</tbody>
+{% endif %}

@@ -1,0 +1,201 @@
+
+<div class="container-fluid ">
+    <div class="row justify-content-center pt-4">
+        <div class="col-6">
+            <div class="card border-secondary shadow mb-3">
+                <h3 class="card-title">New categories and measures</h3>
+                <div class="card-body">
+                    <div class="row no-gutters">
+                        <div class="input-group col-md-5">
+                            <span class="input-group-text"><b>Category</b></span>
+                            <input class="form-control" type="text" id="cat_name">
+                            <button class="btn btn-outline-secondary" type="submit" id="cat_submit">Submit</button>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="input-group col-md-auto">
+                            <span class="input-group-text"><b>Measure</b></span>
+                            <input class="form-control" type="text" id="mf_name">
+                            <span class="input-group-text"><b>Value</b></span>
+                            <input class="form-control" type="number" id="mf_value" value=0>
+                            <span class="input-group-text"><b>Input</b></span>
+                            <input class="form-control" type="number" id="mf_number" value=0>
+                            <select class="custom-select" id="cat_change_new" >
+                                {% for category in categories %}
+                                    <option value="measure_{{measure.id}}" id="cat_change_{{category.id}}">{{category}}</option>
+                                {% endfor %}
+                            </select>
+                            <button class="btn btn-outline-secondary" type="submit" id="ms_submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for category in categories2 %}
+        <div class="row justify-content-center pt-4">
+            <div class="col-auto">
+                <div class="card border-secondary shadow">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <button class="btn text-dark active nav-link" id="measure_view_{{category.0.id}}">Measures</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn text-dark nav-link" id="edit_view_{{category.0.id}}">Edit</button>
+                            </li>
+                            <h3 class="card-title my-0 ml-4">{{category.0}}</h3>
+                        </ul>
+                    </div>
+                    <div class="card-body" style="width: 450px">
+                        <table class="table table-hover table-sm table-responsive" id="table_{{category.0.id}}">
+                            <thead class="thead-light ">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col" style="width: 35%">Current amount</th>
+                                    <th scope="col">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for measure in measures %}
+                                {% if measure.category == category.0 %}
+                                <tr>
+                                    <th scope="row" ><p class="table-correct">{{measure.measure_name}}</p></th>
+                                    <td><p class="table-correct">{{measure.measure_val}}</p></td>
+                                    <div class="input-group">
+                                        <td><input class="form-control" style="width: 85%" type="number" value="{{measure.measure_input}}" id="mf_amount_{{measure.id}}"></td>
+                                    </div>
+                                    <td><p class="table-correct" id="mf_result_{{measure.id}}">{{measure.result_number}}</p></td>                
+                                </tr>
+                                {% endif %}
+                            {% empty %}
+                            {% endfor %}
+                            <tr>
+                                <th><b>Total</b></th>
+                                <td></td>
+                                <td></td>
+                                {% for total in totals %}
+                                {% if total.0 == category.0.id %}
+                                <td><b id="result_{{category.0.id}}">{{total.1}}</b> </td>
+                                {% endif %}
+                                {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% if category.1 %}
+            <div class="col-auto">
+                <div class="card border-secondary shadow">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <button class="btn text-dark active nav-link" id="measure_view_{{category.1.id}}">Measures</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn text-dark nav-link" id="edit_view_{{category.1.id}}">Edit</button>
+                            </li>
+                            <h3 class="card-title my-0 ml-4">{{category.1}}</h3>
+                        </ul>
+                    </div>
+                    <div class="card-body " style="width: 450px">
+                        <table class="table table-hover table-sm" id="table_{{category.1.id}}">
+                            <thead class="thead-light ">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col" style="width: 35%">Current amount</th>
+                                    <th scope="col">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for measure in measures %}
+                                {% if measure.category == category.1 %}
+                                <tr>
+                                    <th scope="row"><p class="table-correct">{{measure.measure_name}}</p></th>
+                                    <td><p class="table-correct">{{measure.measure_val}}</p></td>
+                                    <div class="input-group">
+                                        <td><input class="form-control" style="width: 85%" type="number" value="{{measure.measure_input}}" id="mf_amount_{{measure.id}}"></td>
+                                    </div>
+                                    <td><p class="table-correct" id="mf_result_{{measure.id}}">{{measure.result_number}}</p></td>                
+                                </tr>
+                                {% endif %}
+                            {% empty %}
+                            {% endfor %}
+                            <tr>
+                                <th><b>Total</b></th>
+                                <td></td>
+                                <td></td>
+                                {% for total in totals %}
+                                {% if total.0 == category.1.id %}
+                                <td><b id="result_{{category.1.id}}">{{total.1}}</b> </td>
+                                {% endif %}
+                                {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if category.2 %}
+            <div class="col-auto">
+                <div class="card border-secondary shadow">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <button class="btn text-dark active nav-link" id="measure_view_{{category.2.id}}">Measures</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn text-dark nav-link" id="edit_view_{{category.2.id}}">Edit</button>
+                            </li>
+                            <h3 class="card-title my-0 ml-4">{{category.2}}</h3>
+                        </ul>
+                    </div>
+                    <div class="card-body " style="width: 450px">
+                        <table class="table table-hover table-sm" id="table_{{category.2.id}}">
+                            <thead class="thead-light ">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col" style="width: 35%">Current amount</th>
+                                    <th scope="col">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for measure in measures %}
+                                {% if measure.category == category.2 %}
+                                <tr>
+                                    <th scope="row"><p class="table-correct">{{measure.measure_name}}</p></th>
+                                    <td><p class="table-correct">{{measure.measure_val}}</p></td>
+                                    <div class="input-group">
+                                        <td><input class="form-control" style="width: 85%" type="number" value="{{measure.measure_input}}" id="mf_amount_{{measure.id}}"></td>
+                                    </div>
+                                    <td><p class="table-correct" id="mf_result_{{measure.id}}">{{measure.result_number}}</p></td>                
+                                </tr>
+                                {% endif %}
+                            {% empty %}
+                            {% endfor %}
+                            <tr>
+                                <th><b>Total</b></th>
+                                <td></td>
+                                <td></td>
+                                {% for total in totals %}
+                                {% if total.0 == category.2.id %}
+                                <td><b id="result_{{category.2.id}}">{{total.1}}</b> </td>
+                                {% endif %}
+                                {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    {% empty %}
+    <p>Nothing to display at the moment</p>
+    {% endfor %}
+</div>
