@@ -7,7 +7,7 @@ chardet==3.0.4
 clean-text==0.1.1
 colorama==0.3.9
 crispy-forms-semantic-ui==0.2.0
-cryptography==2.8
+cryptography==3.2
 cycler==0.10.0
 decorator==4.4.1
 dj-database-url==0.5.0
